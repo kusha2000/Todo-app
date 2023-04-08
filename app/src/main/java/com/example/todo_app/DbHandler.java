@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DbHandler extends SQLiteOpenHelper {
     private static final int VERSION=2;
     private static final String DB_NAME="todo";
@@ -52,12 +55,42 @@ public class DbHandler extends SQLiteOpenHelper {
 
     }
 
+    //count todo table records
     public int countToDo(){
         SQLiteDatabase db=getReadableDatabase();
         String query="SELECT * FROM "+TABLE_NAME;
 
         Cursor cursor=db.rawQuery(query,null);
         return cursor.getCount();
+    }
+
+
+    //Get all todos into a list
+    public List<ToDo> getAllToDos(){
+
+        List<ToDo> toDos=new ArrayList();
+        SQLiteDatabase db=getReadableDatabase();
+        String query="SELECT * FROM "+TABLE_NAME;
+
+        Cursor cursor=db.rawQuery(query,null);
+
+        if(cursor.moveToFirst()){
+            do{
+                //create new ToDo object
+                ToDo toDo=new ToDo();
+                //get raw data
+                toDo.setId(cursor.getInt(0));
+                toDo.setTitle(cursor.getString(1));
+                toDo.setDescription(cursor.getString(2));
+                toDo.setStarted(cursor.getLong(3));
+                toDo.setFinished(cursor.getLong(4));
+
+                //toDos[obj1,obj2,obj3..]
+                toDos.add(toDo);
+
+            }while(cursor.moveToNext());
+        }
+        return toDos;
     }
 }
 

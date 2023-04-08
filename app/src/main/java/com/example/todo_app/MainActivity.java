@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -18,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView count;
     Context context;
     private DbHandler dbHandler;
+
+    private List<ToDo> toDos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
         context=this;
         dbHandler=new DbHandler(this);
+
+        toDos=new ArrayList<>();
+        toDos=dbHandler.getAllToDos();
+
+        ToDoAdapter adapter=new ToDoAdapter(context,R.layout.single_todo,toDos);
+        listView.setAdapter(adapter);
 
         int countTodo=dbHandler.countToDo();
         count.setText("You have "+countTodo+" ToDos in today");
@@ -44,3 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+
+
+
+
+
+
