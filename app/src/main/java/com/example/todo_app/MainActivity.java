@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private TextView count;
     Context context;
+    private DbHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +27,17 @@ public class MainActivity extends AppCompatActivity {
         add=findViewById(R.id.add);
         listView=findViewById(R.id.todolist);
         count=findViewById(R.id.todocount);
+
         context=this;
+        dbHandler=new DbHandler(this);
+
+        int countTodo=dbHandler.countToDo();
+        count.setText("You have "+countTodo+" ToDos in today");
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(context,AddToDo.class));
             }
         });
