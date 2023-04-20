@@ -92,6 +92,12 @@ public class DbHandler extends SQLiteOpenHelper {
         }
         return toDos;
     }
+
+    public void deleteToDo(int id){
+        SQLiteDatabase db=getWritableDatabase();
+        db.delete(TABLE_NAME,ID +" =?",new String[]{String.valueOf(id)});
+        db.close();
+    }
 }
 
 
