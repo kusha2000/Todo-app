@@ -68,7 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("Finished", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        todo.setFinished(System.currentTimeMillis());
+                        dbHandler.updateSingleToDo(todo);
                         startActivity(new Intent(context,MainActivity.class));
+
                     }
                 });
                 builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
