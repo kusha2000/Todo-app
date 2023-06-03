@@ -98,6 +98,28 @@ public class DbHandler extends SQLiteOpenHelper {
         db.delete(TABLE_NAME,ID +" =?",new String[]{String.valueOf(id)});
         db.close();
     }
+
+    public ToDo getSingleToDo(int id){
+        SQLiteDatabase db=getWritableDatabase();
+
+        Cursor cursor=db.query(TABLE_NAME,new String[] {ID,TITLE,DESCRIPTION,STARTED,FINISHED},
+                ID+"= ?",new String[]{String.valueOf(id)},null,null,null);
+
+        ToDo toDo;
+        if(cursor != null){
+            cursor.moveToFirst();
+            toDo=new ToDo(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getLong(3),
+                cursor.getLong(4)
+            );
+            return toDo;
+
+        }
+        return null;
+    }
 }
 
 
