@@ -2,9 +2,28 @@
 
 The TODO Android app is a powerful task manager, designed for efficient task handling. Users can view, add, update, and delete tasks, with the added convenience of marking tasks as 'finished' once completed. Developed using Java for Android and backed by a MySQL database, this app streamlines task management and aids users in staying organized and productive
 
+<h3>Technologies Used</h3>
+<ul>
+
+🔹 Android <br>
+🔹 MySQL 
+</ul>
+
+<h3>Features</h3>
+
+<ul>
+✅Add Tasks.<br>
+✅view Tasks.<br>
+✅Update Tasks.<br>
+✅Delete Tasks.<br>
+✅Added convenience of marking tasks as 'finished' once completed.<br>
+</ul>
+
 <h2>This is the Full Demo of the project</h2><br><br>
 
-<img src="https://github.com/kusha2000/Todo-app/assets/127003267/3c0b4e4b-4597-4287-a0c5-3c0614121079" width="300" height="400"><br><br>
+
+https://github.com/user-attachments/assets/d89e0c9a-49cc-4c6f-90f0-37baf7b1b055
+
 
 <h2>This is the screenshots of the App</h2><br><br>
 
